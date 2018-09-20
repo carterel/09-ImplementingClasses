@@ -63,22 +63,24 @@ class Point(object):
         return Point(self.x, self.y)
 
     def move_by(self, x, y):
-        self.previous_x = self.x
-        self.previous_y = self.y
+        previous_x = self.x
+        previous_y = self.y
         self.x = self.x + x
         self.y = self.y + y
         self.total += 1
-        self.distance = self.distance + math.sqrt(((x - self.previous_x)**2) + ((y - self.previous_y)**2))
+        distance = math.sqrt(((x - previous_x)**2) + ((y - previous_y)**2))
+        self.distance += distance
         return Point(self.x, self.y)
 
 
     def move_to(self, x, y):
-        self.previous_x = self.x
-        self.previous_y = self.y
+        previous_x = self.x
+        previous_y = self.y
         self.x = x
         self.y = y
         self.total += 1
-        self.distance = self.distance + math.sqrt(((x - self.previous_x) ** 2) + ((y - self.previous_y) ** 2))
+        distance = math.sqrt(((x - previous_x) ** 2) + ((y - previous_y) ** 2))
+        self.distance += distance
         return Point(self.x, self.y)
 
     def get_number_of_moves_made(self):
